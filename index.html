@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confession</title>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Indie Flower', cursive;
+      background: #FDE3A7;
+      margin: 0;
+      padding: 0;
+    }
+
+    h4 {
+      font-size: 26px;
+      line-height: 1;
+      font-family: 'Amatic SC', cursive;
+      margin: 0;
+      color: #C0392B;
+    }
+
+    .card {
+      color: #013243;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 400px;
+      background: #e0e1dc;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%) perspective(2000px);
+      box-shadow: inset 300px 0 50px rgba(0, 0, 0, .5), 20px 0 60px rgba(0, 0, 0, .5);
+      transition: 1s;
+    }
+
+    .card:hover {
+      transform: translate(-50%, -50%) perspective(2000px) rotate(15deg) scale(1.2);
+      box-shadow: inset 20px 0 50px rgba(0, 0, 0, .5), 0 10px 100px rgba(0, 0, 0, .5);
+    }
+
+    .card:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: #BAC1BA;
+      transform-origin: bottom;
+      transform: skewX(-45deg);
+    }
+
+    .card:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -5px;
+      width: 5px;
+      height: 100%;
+      background: #92A29C;
+      transform: skewY(-45deg);
+    }
+
+    .imgBox {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-origin: left;
+      transition: .7s;
+    }
+
+    .bark {
+      position: absolute;
+      background: #e0e1dc;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: .7s;
+    }
+
+    .imgBox img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card:hover .imgBox {
+      transform: rotateY(-135deg);
+    }
+
+    .card:hover .bark {
+      opacity: 1;
+      transition: .6s;
+      box-shadow: 300px 200px 100px rgba(0, 0, 0, .4) inset;
+    }
+
+    .details {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      padding: 40px 20px 20px 20px;
+      z-index: -1;
+    }
+
+    .details p {
+      font-size: 15px;
+      line-height: 22px;
+      transform: rotate(-2deg);
+      margin: 8px 0;
+      word-break: break-word;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    video {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Musik dengan video tersembunyi -->
+  <video id="bgMusic" loop>
+    <source src="./hey-stephen.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="card">
+    <div class="imgBox">
+      <div class="bark"></div>
+      <img src="./love.jpg" alt="love" />
+    </div>
+    <div class="details">
+      <h4>Hey</h4>
+      <p>I’m not great at saying things out loud, so I’m writing this instead.</p>
+      <p>I don’t know exactly when it started, but at some point, you became someone I really look forward to talking to.</p>
+      <p>I like your vibe, the way you carry yourself, and honestly... you just feel different.</p>
+      <p>I don’t expect anything. I just thought it’s time you knew—I like you.</p>
+      <p>That’s all. Just wanted to say it.</p>
+      <p class="text-right">from someone who thinks of you a little more than they probably should</p>
+    </div>
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById('bgMusic');
+    document.body.addEventListener('click', () => {
+      bgMusic.currentTime = 160; // mulai dari detik ke-160 (2:40)
+      bgMusic.muted = false;
+      bgMusic.volume = 1.0; // tambahkan ini
+      bgMusic.play().catch(err => console.log('Autoplay error:', err));
+    }, { once: true });
+  </script>
+</body>
+</html>
