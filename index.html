@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confession</title>
-  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
   <style>
     body {
       font-family: 'Indie Flower', cursive;
@@ -121,22 +120,24 @@
       text-align: right;
     }
 
-    video {
+    audio {
       display: none;
     }
   </style>
 </head>
 <body>
-  <!-- Musik dengan video tersembunyi -->
-  <audio id="bgMusic" loop>
-    <source src="./hey-stephen.mp3" type="audio/mp43" />
-    Your browser does not support the video tag.
+
+  <!-- Hidden Audio -->
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="hey-stephen.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
 
+  <!-- Confession Card -->
   <div class="card">
     <div class="imgBox">
       <div class="bark"></div>
-      <img src="./love.jpg" alt="love" />
+      <img src="./love.jpg" alt="love">
     </div>
     <div class="details">
       <h4>Hey</h4>
@@ -150,13 +151,13 @@
   </div>
 
   <script>
-    const bgMusic = document.getElementById('bgMusic');
+    const audio = document.getElementById('bgMusic');
     document.body.addEventListener('click', () => {
-      bgMusic.currentTime = 160; // mulai dari detik ke-160 (2:40)
-      bgMusic.muted = false;
-      bgMusic.volume = 1.0; // tambahkan ini
-      bgMusic.play().catch(err => console.log('Autoplay error:', err));
+      audio.currentTime = 160; // start from 2:40
+      audio.volume = 1.0;
+      audio.play().catch(err => console.log('Autoplay error:', err));
     }, { once: true });
   </script>
+
 </body>
 </html>
